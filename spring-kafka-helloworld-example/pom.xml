@@ -7,7 +7,7 @@
     <artifactId>spring-kafka-helloworld-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>kafka-helloworld-example</name>
+    <name>spring-kafka-helloworld-example</name>
     <description>Spring-Kafka - Consumer &amp; Producer Example</description>
     <url>http://www.codenotfound.com/2016/09/spring-kafka-consumer-producer-example.html</url>
 
