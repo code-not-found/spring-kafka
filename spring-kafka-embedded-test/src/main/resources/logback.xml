@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+
+    <!-- PROPERTIES -->
+    <property name="layout"
+        value="%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}] %m%n" />
+    <property name="logFile" value="spring-kafka-embedded-test" />
+
+    <!-- APPENDERS -->
+    <appender name="LOG_FILE"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logFile}.log</File>
+        <rollingPolicy
+            class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logFile}.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${layout}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOG_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${layout}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- LOGGERS -->
+    <logger name="com.codenotfound" level="INFO" />
+
+    <logger name="org.springframework" level="INFO" />
+
+    <root level="WARN">
+        <appender-ref ref="LOG_FILE" />
+        <appender-ref ref="LOG_STDOUT" />
+    </root>
+
+</configuration>
