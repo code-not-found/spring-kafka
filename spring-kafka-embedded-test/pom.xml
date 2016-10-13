@@ -9,7 +9,7 @@
 
     <name>spring-kafka-embedded-test</name>
     <description>Spring-Kafka - Embedded Kafka Test Example</description>
-    <url>http://www.codenotfound.com/2016/09/spring-kafka-embedded-kafka-test-example.html</url>
+    <url>http://www.codenotfound.com/2016/10/spring-kafka-embedded-server-unit-test.html</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

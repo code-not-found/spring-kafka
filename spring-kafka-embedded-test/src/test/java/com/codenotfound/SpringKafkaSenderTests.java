@@ -75,11 +75,12 @@ public class SpringKafkaSenderTests {
                         .getPartitionsPerTopic());
 
         // send the message
+        String greeting = "Hello Spring Kafka Sender!";
         sender.sendMessage(AllSpringKafkaTests.HELLOWORLD_SENDER_TOPIC,
-                "Hello Spring Kafka Sender!");
+                greeting);
         // check that the message was received
         assertThat(records.poll(10, TimeUnit.SECONDS))
-                .has(value("Hello Spring Kafka Sender!"));
+                .has(value(greeting));
 
         // stop the container
         container.stop();
