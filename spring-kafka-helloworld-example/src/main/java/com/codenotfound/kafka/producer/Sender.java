@@ -1,4 +1,4 @@
-package com.codenotfound.producer;
+package com.codenotfound.kafka.producer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +43,6 @@ public class Sender {
                 });
 
         // alternatively, to block the sending thread, to await the result,
-        // invoke the future’s get() method
+        // invoke the future's get() method
     }
 }

@@ -1,4 +1,4 @@
-package com.codenotfound.consumer;
+package com.codenotfound.kafka.consumer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,4 +57,3 @@ public class ReceiverConfig {
         return new Receiver();
     }
 }
-

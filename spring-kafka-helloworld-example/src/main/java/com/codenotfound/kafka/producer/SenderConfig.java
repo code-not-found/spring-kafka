@@ -1,4 +1,4 @@
-package com.codenotfound.producer;
+package com.codenotfound.kafka.producer;
 
 import java.util.HashMap;
 import java.util.Map;

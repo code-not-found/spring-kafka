@@ -1,4 +1,4 @@
-package com.codenotfound;
+package com.codenotfound.kafka;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.codenotfound.consumer.Receiver;
-import com.codenotfound.producer.Sender;
+import com.codenotfound.kafka.consumer.Receiver;
+import com.codenotfound.kafka.producer.Sender;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
