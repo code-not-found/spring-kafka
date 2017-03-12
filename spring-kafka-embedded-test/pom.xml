@@ -9,21 +9,32 @@
 
     <name>spring-kafka-embedded-test</name>
     <description>Spring-Kafka - Embedded Kafka Test Example</description>
-    <url>http://www.codenotfound.com/2016/10/spring-kafka-embedded-server-unit-test.html</url>
+    <url>https://www.codenotfound.com/2016/10/spring-kafka-embedded-server-unit-test.html</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.1.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <version>1.5.2.RELEASE</version>
     </parent>
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-kafka.version>1.1.1.RELEASE</spring-kafka.version>
+
+        <spring-kafka.version>1.1.2.RELEASE</spring-kafka.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- Spring Kafka -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -34,16 +45,6 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka-test</artifactId>
             <version>${spring-kafka.version}</version>
-        </dependency>
-        <!-- Spring Boot -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -57,7 +58,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <includes>
                         <include>AllSpringKafkaTests.java</include>
@@ -66,5 +67,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

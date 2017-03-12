@@ -1,4 +1,4 @@
-package com.codenotfound;
+package com.codenotfound.kafka;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,11 +19,11 @@ import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.codenotfound.consumer.Receiver;
+import com.codenotfound.kafka.consumer.Receiver;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringKafkaReceiverTests {
+public class SpringKafkaReceiverTest {
 
     @Autowired
     private Receiver receiver;

@@ -1,4 +1,4 @@
-package com.codenotfound.consumer;
+package com.codenotfound.kafka.consumer;
 
 import java.util.concurrent.CountDownLatch;
 

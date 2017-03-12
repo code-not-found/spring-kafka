@@ -9,7 +9,7 @@
 
     <name>spring-kafka-helloworld-example</name>
     <description>Spring Kafka - Consumer &amp; Producer Example</description>
-    <url>http://www.codenotfound.com/2016/09/spring-kafka-consumer-producer-example.html</url>
+    <url>https://www.codenotfound.com/2016/09/spring-kafka-consumer-producer-example.html</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -20,7 +20,7 @@
     <properties>
         <java.version>1.8</java.version>
 
-        <spring-kafka.version>1.1.2.RELEASE</spring-kafka.version>
+    <spring-kafka.version>1.1.2.RELEASE</spring-kafka.version>
     </properties>
 
     <dependencies>

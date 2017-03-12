@@ -1,4 +1,4 @@
-package com.codenotfound;
+package com.codenotfound.kafka;
 
 import org.junit.BeforeClass;
 import org.junit.ClassRule;
@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.test.rule.KafkaEmbedded;
 
 @RunWith(Suite.class)
-@SuiteClasses({ SpringKafkaSenderTests.class,
-        SpringKafkaReceiverTests.class })
+@SuiteClasses({ SpringKafkaSenderTest.class,
+        SpringKafkaReceiverTest.class })
 public class AllSpringKafkaTests {
 
     private static final Logger LOGGER = LoggerFactory

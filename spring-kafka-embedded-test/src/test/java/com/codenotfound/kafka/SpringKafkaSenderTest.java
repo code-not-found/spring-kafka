@@ -1,4 +1,4 @@
-package com.codenotfound;
+package com.codenotfound.kafka;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.kafka.test.assertj.KafkaConditions.value;
@@ -23,14 +23,14 @@ import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.codenotfound.producer.Sender;
+import com.codenotfound.kafka.producer.Sender;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringKafkaSenderTests {
+public class SpringKafkaSenderTest {
 
     private static final Logger LOGGER = LoggerFactory
-            .getLogger(SpringKafkaSenderTests.class);
+            .getLogger(SpringKafkaSenderTest.class);
 
     @Autowired
     private Sender sender;
