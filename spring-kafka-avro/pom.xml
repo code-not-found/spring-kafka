@@ -25,7 +25,7 @@
   </properties>
 
   <dependencies>
-    <!-- Spring Boot -->
+    <!-- spring-boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
@@ -35,7 +35,7 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- Spring Kafka -->
+    <!-- spring-kafka -->
     <dependency>
       <groupId>org.springframework.kafka</groupId>
       <artifactId>spring-kafka</artifactId>
@@ -45,8 +45,9 @@
       <groupId>org.springframework.kafka</groupId>
       <artifactId>spring-kafka-test</artifactId>
       <version>${spring-kafka.version}</version>
+      <scope>test</scope>
     </dependency>
-    <!-- Apache Avro -->
+    <!-- avro -->
     <dependency>
       <groupId>org.apache.avro</groupId>
       <artifactId>avro</artifactId>

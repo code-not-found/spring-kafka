@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.xml.bind.DatatypeConverter;
+
 import org.apache.avro.generic.GenericDatumWriter;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.BinaryEncoder;
@@ -46,7 +48,7 @@ public class AvroSerializer<T extends SpecificRecordBase> implements Serializer<
         byteArrayOutputStream.close();
 
         result = byteArrayOutputStream.toByteArray();
-        LOGGER.debug("serialized data='{}'", result);
+        LOGGER.debug("serialized data='{}'", DatatypeConverter.printHexBinary(result));
       }
       return result;
     } catch (IOException ex) {

@@ -3,6 +3,8 @@ package com.codenotfound.kafka.serializer;
 import java.util.Arrays;
 import java.util.Map;
 
+import javax.xml.bind.DatatypeConverter;
+
 import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.DatumReader;
 import org.apache.avro.io.Decoder;
@@ -40,7 +42,7 @@ public class AvroDeserializer<T extends SpecificRecordBase> implements Deseriali
     try {
       T result = null;
       if (data != null) {
-        LOGGER.debug("serialized data='{}'", data);
+        LOGGER.debug("serialized data='{}'", DatatypeConverter.printHexBinary(data));
 
         DatumReader<GenericRecord> datumReader =
             new SpecificDatumReader<>(targetType.newInstance().getSchema());
