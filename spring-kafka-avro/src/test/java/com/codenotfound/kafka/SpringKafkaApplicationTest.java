@@ -25,7 +25,7 @@ import example.avro.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringKafkaApplicationTests {
+public class SpringKafkaApplicationTest {
 
   @Autowired
   private Sender sender;
