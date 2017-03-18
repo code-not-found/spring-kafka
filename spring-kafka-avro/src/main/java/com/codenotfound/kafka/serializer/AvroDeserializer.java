@@ -41,6 +41,7 @@ public class AvroDeserializer<T extends SpecificRecordBase> implements Deseriali
   public T deserialize(String topic, byte[] data) {
     try {
       T result = null;
+
       if (data != null) {
         LOGGER.debug("serialized data='{}'", DatatypeConverter.printHexBinary(data));
 
@@ -51,6 +52,7 @@ public class AvroDeserializer<T extends SpecificRecordBase> implements Deseriali
         result = (T) datumReader.read(null, decoder);
         LOGGER.debug("data='{}'", result);
       }
+
       return result;
     } catch (Exception ex) {
       throw new SerializationException(

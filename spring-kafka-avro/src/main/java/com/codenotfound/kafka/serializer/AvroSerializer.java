@@ -35,6 +35,7 @@ public class AvroSerializer<T extends SpecificRecordBase> implements Serializer<
   public byte[] serialize(String topic, T data) {
     try {
       byte[] result = null;
+
       if (data != null) {
         LOGGER.debug("data='{}'", data);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -50,6 +51,7 @@ public class AvroSerializer<T extends SpecificRecordBase> implements Serializer<
         result = byteArrayOutputStream.toByteArray();
         LOGGER.debug("serialized data='{}'", DatatypeConverter.printHexBinary(result));
       }
+
       return result;
     } catch (IOException ex) {
       throw new SerializationException(

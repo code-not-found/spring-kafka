@@ -37,10 +37,8 @@ public class ReceiverConfig {
 
   @Bean
   public ConsumerFactory<String, User> consumerFactory() {
-    AvroDeserializer<User> avroDeserializer = new AvroDeserializer<>(User.class);
-    
     return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(),
-        avroDeserializer);
+        new AvroDeserializer<>(User.class));
   }
 
   @Bean

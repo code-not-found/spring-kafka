@@ -41,9 +41,7 @@ public class SenderConfig {
 
   @Bean
   public KafkaTemplate<String, User> kafkaTemplate() {
-    KafkaTemplate<String, User> kafkaTemplate = new KafkaTemplate<>(producerFactory());
-
-    return kafkaTemplate;
+    return new KafkaTemplate<>(producerFactory());
   }
 
   @Bean
