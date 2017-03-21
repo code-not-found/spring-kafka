@@ -61,7 +61,7 @@ public class SpringKafkaApplicationTest {
 
   @Test
   public void testReceiver() throws Exception {
-    Car car = new Car("make", "manufacturer", "id");
+    Car car = new Car("Passat", "Volkswagen", "ABC-123");
 
     sender.send(car);
 
