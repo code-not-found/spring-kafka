@@ -10,7 +10,7 @@ import com.codenotfound.model.Car;
 
 public class Sender {
 
-  @Value("${kafka.json.topic}")
+  @Value("${kafka.topic.json}")
   private String jsonTopic;
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);

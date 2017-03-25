@@ -14,7 +14,7 @@ public class Receiver {
 
   private CountDownLatch latch = new CountDownLatch(1);
 
-  @KafkaListener(topics = "${kafka.json.topic}")
+  @KafkaListener(topics = "${kafka.topic.json}")
   public void receive(Car car) {
     LOGGER.info("received car='{}'", car.toString());
     latch.countDown();

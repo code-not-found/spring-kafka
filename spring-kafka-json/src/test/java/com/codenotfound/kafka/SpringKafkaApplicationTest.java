@@ -40,7 +40,7 @@ public class SpringKafkaApplicationTest {
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    System.setProperty("kafka.bootstrap.servers", embeddedKafka.getBrokersAsString());
+    System.setProperty("kafka.servers.bootstrap", embeddedKafka.getBrokersAsString());
   }
 
   @SuppressWarnings("unchecked")
@@ -60,7 +60,7 @@ public class SpringKafkaApplicationTest {
   }
 
   @Test
-  public void testReceiver() throws Exception {
+  public void testReceive() throws Exception {
     Car car = new Car("Passat", "Volkswagen", "ABC-123");
 
     sender.send(car);

@@ -20,7 +20,7 @@ import com.codenotfound.model.Car;
 @EnableKafka
 public class ReceiverConfig {
 
-  @Value("${kafka.bootstrap.servers}")
+  @Value("${kafka.servers.bootstrap}")
   private String bootstrapServers;
 
   @Bean
