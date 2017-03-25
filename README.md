@@ -1,4 +1,4 @@
-spring-kafka
+spring-kafka [![Build Status](https://travis-ci.org/code-not-found/spring-kafka.svg?branch=master)](https://travis-ci.org/code-not-found/spring-kafka)
 ============
 
 This repository contains the source code for the spring-kafka examples posted on http://www.codenotfound.com
