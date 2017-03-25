@@ -19,7 +19,7 @@ import example.avro.User;
 @Configuration
 public class SenderConfig {
 
-  @Value("${kafka.bootstrap.servers}")
+  @Value("${kafka.servers.bootstrap}")
   private String bootstrapServers;
 
   @Bean

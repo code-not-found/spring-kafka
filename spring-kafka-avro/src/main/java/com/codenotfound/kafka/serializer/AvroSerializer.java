@@ -38,6 +38,7 @@ public class AvroSerializer<T extends SpecificRecordBase> implements Serializer<
 
       if (data != null) {
         LOGGER.debug("data='{}'", data);
+
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         BinaryEncoder binaryEncoder =
             EncoderFactory.get().binaryEncoder(byteArrayOutputStream, null);
@@ -51,11 +52,10 @@ public class AvroSerializer<T extends SpecificRecordBase> implements Serializer<
         result = byteArrayOutputStream.toByteArray();
         LOGGER.debug("serialized data='{}'", DatatypeConverter.printHexBinary(result));
       }
-
       return result;
     } catch (IOException ex) {
       throw new SerializationException(
-          "Can't serialize data [" + data + "] for topic [" + topic + "]", ex);
+          "Can't serialize data='" + data + "' for topic='" + topic + "'", ex);
     }
   }
 }

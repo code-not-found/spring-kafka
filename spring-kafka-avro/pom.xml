@@ -8,8 +8,8 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>spring-kafka-avro</name>
-  <description>Spring Kafka - Avro Serializer &amp; Deserializer</description>
-  <url>https://www.codenotfound.com/2017/03/spring-kafka-avro-serializer-deserializer.html</url>
+  <description>Spring Kafka - Apache Avro Example</description>
+  <url>https://www.codenotfound.com/2017/03/spring-kafka-apache-avro-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>

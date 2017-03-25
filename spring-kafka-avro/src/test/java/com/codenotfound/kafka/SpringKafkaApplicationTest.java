@@ -41,7 +41,7 @@ public class SpringKafkaApplicationTest {
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    System.setProperty("kafka.bootstrap.servers", embeddedKafka.getBrokersAsString());
+    System.setProperty("kafka.servers.bootstrap", embeddedKafka.getBrokersAsString());
   }
 
   @SuppressWarnings("unchecked")

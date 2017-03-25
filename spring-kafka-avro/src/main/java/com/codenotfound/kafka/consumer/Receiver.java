@@ -14,7 +14,7 @@ public class Receiver {
 
   private CountDownLatch latch = new CountDownLatch(1);
 
-  @KafkaListener(topics = "${kafka.avro.topic}")
+  @KafkaListener(topics = "${kafka.topic.avro}")
   public void receive(User user) {
     LOGGER.info("received user='{}'", user.toString());
     latch.countDown();

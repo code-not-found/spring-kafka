@@ -10,7 +10,7 @@ import example.avro.User;
 
 public class Sender {
 
-  @Value("${kafka.avro.topic}")
+  @Value("${kafka.topic.avro}")
   private String avroTopic;
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
