@@ -5,4 +5,5 @@ env:
 - TEST_DIR=spring-kafka-embedded-test
 - TEST_DIR=spring-kafka-avro
 - TEST_DIR=spring-kafka-json
+- TEST_DIR=spring-kafka-avro-bijection
 script: cd $TEST_DIR && mvn test -B
