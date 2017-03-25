@@ -2,6 +2,7 @@ language: java
 jdk:
 - oraclejdk8
 env:
-  - TEST_DIR=spring-kafka-helloworld
-  - TEST_DIR=spring-kafka-embedded-test
+- TEST_DIR=spring-kafka-helloworld
+- TEST_DIR=spring-kafka-embedded-test
+- TEST_DIR=spring-kafka-avro
 script: cd $TEST_DIR && mvn test -B
