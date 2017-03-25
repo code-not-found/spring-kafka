@@ -22,7 +22,7 @@
 
     <spring-kafka.version>1.1.2.RELEASE</spring-kafka.version>
     <avro.version>1.8.1</avro.version>
-    <bijection.version>0.9.2</bijection.version>
+    <bijection.version>0.9.5</bijection.version>
   </properties>
 
   <dependencies>
@@ -56,14 +56,8 @@
     </dependency>
     <dependency>
       <groupId>com.twitter</groupId>
-      <artifactId>bijection-avro_2.10</artifactId>
+      <artifactId>bijection-avro_2.11</artifactId>
       <version>${bijection.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.scala-lang</groupId>
-          <artifactId>scala-library</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
   </dependencies>
 
