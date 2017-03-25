@@ -25,51 +25,49 @@ import com.codenotfound.kafka.consumer.Receiver;
 @SpringBootTest
 public class SpringKafkaReceiverTest {
 
-    @Autowired
-    private Receiver receiver;
+  @Autowired
+  private Receiver receiver;
 
-    @Autowired
-    KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
+  @Autowired
+  KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
 
-    @Test
-    public void testReceiver() throws Exception {
-        // set up the Kafka producer properties
-        Map<String, Object> senderProperties = KafkaTestUtils
-                .senderProps(AllSpringKafkaTests.embeddedKafka
-                        .getBrokersAsString());
+  @SuppressWarnings("unchecked")
+  @Test
+  public void testReceive() throws Exception {
+    // set up the Kafka producer properties
+    Map<String, Object> senderProperties =
+        KafkaTestUtils.senderProps(AllSpringKafkaTests.embeddedKafka.getBrokersAsString());
 
-        // create a Kafka producer factory
-        ProducerFactory<Integer, String> producerFactory = new DefaultKafkaProducerFactory<Integer, String>(
-                senderProperties);
+    // create a Kafka producer factory
+    ProducerFactory<Integer, String> producerFactory =
+        new DefaultKafkaProducerFactory<Integer, String>(senderProperties);
 
-        // create a Kafka template
-        KafkaTemplate<Integer, String> template = new KafkaTemplate<>(
-                producerFactory);
-        // set the default topic to send to
-        template.setDefaultTopic(
-                AllSpringKafkaTests.HELLOWORLD_RECEIVER_TOPIC);
+    // create a Kafka template
+    KafkaTemplate<Integer, String> template = new KafkaTemplate<>(producerFactory);
+    // set the default topic to send to
+    template.setDefaultTopic(AllSpringKafkaTests.RECEIVER_TOPIC);
 
-        // get the ConcurrentMessageListenerContainers
-        for (MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry
-                .getListenerContainers()) {
-            if (messageListenerContainer instanceof ConcurrentMessageListenerContainer) {
-                ConcurrentMessageListenerContainer<Integer, String> concurrentMessageListenerContainer = (ConcurrentMessageListenerContainer<Integer, String>) messageListenerContainer;
+    // get the ConcurrentMessageListenerContainers
+    for (MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry
+        .getListenerContainers()) {
+      if (messageListenerContainer instanceof ConcurrentMessageListenerContainer) {
+        ConcurrentMessageListenerContainer<Integer, String> concurrentMessageListenerContainer =
+            (ConcurrentMessageListenerContainer<Integer, String>) messageListenerContainer;
 
-                // as the topic is created implicitly, the default number of
-                // partitions is 1
-                int partitionsPerTopic = 1;
-                // wait until the container has the required number of assigned
-                // partitions
-                ContainerTestUtils.waitForAssignment(
-                        concurrentMessageListenerContainer,
-                        partitionsPerTopic);
-            }
-        }
-
-        // send the message
-        template.sendDefault("Hello Spring Kafka Receiver!");
-
-        receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
-        assertThat(receiver.getLatch().getCount()).isEqualTo(0);
+        // as the topic is created implicitly, the default number of
+        // partitions is 1
+        int partitionsPerTopic = 1;
+        // wait until the container has the required number of assigned
+        // partitions
+        ContainerTestUtils.waitForAssignment(concurrentMessageListenerContainer,
+            partitionsPerTopic);
+      }
     }
+
+    // send the message
+    template.sendDefault("Hello Spring Kafka Receiver!");
+
+    receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
+    assertThat(receiver.getLatch().getCount()).isEqualTo(0);
+  }
 }

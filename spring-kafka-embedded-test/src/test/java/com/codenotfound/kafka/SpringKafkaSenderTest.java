@@ -29,60 +29,53 @@ import com.codenotfound.kafka.producer.Sender;
 @SpringBootTest
 public class SpringKafkaSenderTest {
 
-    private static final Logger LOGGER = LoggerFactory
-            .getLogger(SpringKafkaSenderTest.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(SpringKafkaSenderTest.class);
 
-    @Autowired
-    private Sender sender;
+  @Autowired
+  private Sender sender;
 
-    @Test
-    public void testSender() throws Exception {
-        // set up the Kafka consumer properties
-        Map<String, Object> consumerProperties = KafkaTestUtils
-                .consumerProps("helloworld_sender_group", "false",
-                        AllSpringKafkaTests.embeddedKafka);
+  @Test
+  public void testSend() throws Exception {
+    // set up the Kafka consumer properties
+    Map<String, Object> consumerProperties =
+        KafkaTestUtils.consumerProps("sender_group", "false", AllSpringKafkaTests.embeddedKafka);
 
-        // create a Kafka consumer factory
-        DefaultKafkaConsumerFactory<Integer, String> consumerFactory = new DefaultKafkaConsumerFactory<Integer, String>(
-                consumerProperties);
-        // set the topic that needs to be consumed
-        ContainerProperties containerProperties = new ContainerProperties(
-                AllSpringKafkaTests.HELLOWORLD_SENDER_TOPIC);
+    // create a Kafka consumer factory
+    DefaultKafkaConsumerFactory<Integer, String> consumerFactory =
+        new DefaultKafkaConsumerFactory<Integer, String>(consumerProperties);
+    // set the topic that needs to be consumed
+    ContainerProperties containerProperties =
+        new ContainerProperties(AllSpringKafkaTests.SENDER_TOPIC);
 
-        // create a Kafka MessageListenerContainer
-        KafkaMessageListenerContainer<Integer, String> container = new KafkaMessageListenerContainer<>(
-                consumerFactory, containerProperties);
+    // create a Kafka MessageListenerContainer
+    KafkaMessageListenerContainer<Integer, String> container =
+        new KafkaMessageListenerContainer<>(consumerFactory, containerProperties);
 
-        // create a thread safe queue to store the received message
-        BlockingQueue<ConsumerRecord<Integer, String>> records = new LinkedBlockingQueue<>();
-        // setup a Kafka message listener
-        container.setupMessageListener(
-                new MessageListener<Integer, String>() {
-                    @Override
-                    public void onMessage(
-                            ConsumerRecord<Integer, String> record) {
-                        LOGGER.debug(record.toString());
-                        records.add(record);
-                    }
-                });
+    // create a thread safe queue to store the received message
+    BlockingQueue<ConsumerRecord<Integer, String>> records = new LinkedBlockingQueue<>();
+    // setup a Kafka message listener
+    container.setupMessageListener(new MessageListener<Integer, String>() {
+      @Override
+      public void onMessage(ConsumerRecord<Integer, String> record) {
+        LOGGER.debug(record.toString());
+        records.add(record);
+      }
+    });
 
-        // start the container and underlying message listener
-        container.start();
-        // wait until the container has the required number of assigned
-        // partitions
-        ContainerTestUtils.waitForAssignment(container,
-                AllSpringKafkaTests.embeddedKafka
-                        .getPartitionsPerTopic());
+    // start the container and underlying message listener
+    container.start();
+    // wait until the container has the required number of assigned
+    // partitions
+    ContainerTestUtils.waitForAssignment(container,
+        AllSpringKafkaTests.embeddedKafka.getPartitionsPerTopic());
 
-        // send the message
-        String greeting = "Hello Spring Kafka Sender!";
-        sender.sendMessage(AllSpringKafkaTests.HELLOWORLD_SENDER_TOPIC,
-                greeting);
-        // check that the message was received
-        assertThat(records.poll(10, TimeUnit.SECONDS))
-                .has(value(greeting));
+    // send the message
+    String greeting = "Hello Spring Kafka Sender!";
+    sender.send(AllSpringKafkaTests.SENDER_TOPIC, greeting);
+    // check that the message was received
+    assertThat(records.poll(10, TimeUnit.SECONDS)).has(value(greeting));
 
-        // stop the container
-        container.stop();
-    }
+    // stop the container
+    container.stop();
+  }
 }
