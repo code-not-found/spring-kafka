@@ -17,17 +17,17 @@ import com.codenotfound.kafka.producer.Sender;
 @SpringBootTest
 public class SpringKafkaApplicationTests {
 
-    @Autowired
-    private Sender sender;
+  @Autowired
+  private Sender sender;
 
-    @Autowired
-    private Receiver receiver;
+  @Autowired
+  private Receiver receiver;
 
-    @Test
-    public void testReceiver() throws Exception {
-        sender.sendMessage("helloworld.t", "Hello Spring Kafka!");
+  @Test
+  public void testReceive() throws Exception {
+    sender.send("helloworld.t", "Hello Spring Kafka!");
 
-        receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
-        assertThat(receiver.getLatch().getCount()).isEqualTo(0);
-    }
+    receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
+    assertThat(receiver.getLatch().getCount()).isEqualTo(0);
+  }
 }
