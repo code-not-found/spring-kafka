@@ -41,22 +41,22 @@ public class SpringKafkaSenderTest {
         KafkaTestUtils.consumerProps("sender_group", "false", AllSpringKafkaTests.embeddedKafka);
 
     // create a Kafka consumer factory
-    DefaultKafkaConsumerFactory<Integer, String> consumerFactory =
-        new DefaultKafkaConsumerFactory<Integer, String>(consumerProperties);
+    DefaultKafkaConsumerFactory<String, String> consumerFactory =
+        new DefaultKafkaConsumerFactory<String, String>(consumerProperties);
     // set the topic that needs to be consumed
     ContainerProperties containerProperties =
         new ContainerProperties(AllSpringKafkaTests.SENDER_TOPIC);
 
     // create a Kafka MessageListenerContainer
-    KafkaMessageListenerContainer<Integer, String> container =
+    KafkaMessageListenerContainer<String, String> container =
         new KafkaMessageListenerContainer<>(consumerFactory, containerProperties);
 
     // create a thread safe queue to store the received message
-    BlockingQueue<ConsumerRecord<Integer, String>> records = new LinkedBlockingQueue<>();
+    BlockingQueue<ConsumerRecord<String, String>> records = new LinkedBlockingQueue<>();
     // setup a Kafka message listener
-    container.setupMessageListener(new MessageListener<Integer, String>() {
+    container.setupMessageListener(new MessageListener<String, String>() {
       @Override
-      public void onMessage(ConsumerRecord<Integer, String> record) {
+      public void onMessage(ConsumerRecord<String, String> record) {
         LOGGER.debug(record.toString());
         records.add(record);
       }

@@ -39,11 +39,11 @@ public class SpringKafkaReceiverTest {
         KafkaTestUtils.senderProps(AllSpringKafkaTests.embeddedKafka.getBrokersAsString());
 
     // create a Kafka producer factory
-    ProducerFactory<Integer, String> producerFactory =
-        new DefaultKafkaProducerFactory<Integer, String>(senderProperties);
+    ProducerFactory<String, String> producerFactory =
+        new DefaultKafkaProducerFactory<String, String>(senderProperties);
 
     // create a Kafka template
-    KafkaTemplate<Integer, String> template = new KafkaTemplate<>(producerFactory);
+    KafkaTemplate<String, String> template = new KafkaTemplate<>(producerFactory);
     // set the default topic to send to
     template.setDefaultTopic(AllSpringKafkaTests.RECEIVER_TOPIC);
 
@@ -51,8 +51,8 @@ public class SpringKafkaReceiverTest {
     for (MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry
         .getListenerContainers()) {
       if (messageListenerContainer instanceof ConcurrentMessageListenerContainer) {
-        ConcurrentMessageListenerContainer<Integer, String> concurrentMessageListenerContainer =
-            (ConcurrentMessageListenerContainer<Integer, String>) messageListenerContainer;
+        ConcurrentMessageListenerContainer<String, String> concurrentMessageListenerContainer =
+            (ConcurrentMessageListenerContainer<String, String>) messageListenerContainer;
 
         // as the topic is created implicitly, the default number of
         // partitions is 1
