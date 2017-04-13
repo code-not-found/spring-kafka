@@ -12,10 +12,12 @@ addons:
       secure: $SONAR_TOKEN
 
 env:
-- PROJECT_DIR=spring-kafka-embedded-test
 - PROJECT_DIR=spring-kafka-avro
-- PROJECT_DIR=spring-kafka-json
 - PROJECT_DIR=spring-kafka-avro-bijection
+- PROJECT_DIR=spring-kafka-boot
+- PROJECT_DIR=spring-kafka-embedded-test
+- PROJECT_DIR=spring-kafka-json
+
 
 script:
 - cd $PROJECT_DIR
