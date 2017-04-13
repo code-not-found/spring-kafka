@@ -7,7 +7,7 @@ jdk:
 
 addons:
   sonarqube:
-    organization: "spring-kafka"
+    organization: code-not-found-spring-kafka
     token:
       secure: $SONAR_TOKEN
 
