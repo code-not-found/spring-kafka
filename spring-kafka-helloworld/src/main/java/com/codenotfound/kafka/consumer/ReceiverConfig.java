@@ -29,7 +29,8 @@ public class ReceiverConfig {
     props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     // allows a pool of processes to divide the work of consuming and processing records
     props.put(ConsumerConfig.GROUP_ID_CONFIG, "helloworld");
-    // reset the offset to the beginning as the consumer will connect after the message was sent
+    // ensures the new consumer group will get the message sent in case the container started after
+    // the send was completed
     props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
     return props;
