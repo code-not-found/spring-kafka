@@ -16,12 +16,10 @@ public class Sender {
   private KafkaTemplate<String, String> kafkaTemplate;
 
   public void send(String topic, String message) {
-    // the KafkaTemplate provides asynchronous send methods returning a
-    // Future
+    // the KafkaTemplate provides asynchronous send methods returning a Future
     ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, message);
 
-    // you can register a callback with the listener to receive the result
-    // of the send asynchronously
+    // register a callback with the listener to receive the result of the send asynchronously
     future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
       @Override
@@ -36,7 +34,6 @@ public class Sender {
       }
     });
 
-    // alternatively, to block the sending thread, to await the result,
-    // invoke the future's get() method
+    // or, to block the sending thread to await the result, invoke the future's get() method
   }
 }
