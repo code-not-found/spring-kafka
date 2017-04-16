@@ -18,7 +18,7 @@ import com.codenotfound.model.Car;
 @Configuration
 public class SenderConfig {
 
-  @Value("${kafka.servers.bootstrap}")
+  @Value("${kafka.bootstrap-servers}")
   private String bootstrapServers;
 
   @Bean
@@ -28,7 +28,6 @@ public class SenderConfig {
     props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-    props.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 5000);
 
     return props;
   }

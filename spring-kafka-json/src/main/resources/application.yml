@@ -1,0 +1,9 @@
+spring:
+  main:
+    web-environment: false
+
+kafka:
+  bootstrap-servers: localhost:9092
+
+topic:
+  json: json.t

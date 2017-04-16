@@ -10,10 +10,10 @@ import com.codenotfound.model.Car;
 
 public class Sender {
 
-  @Value("${kafka.topic.json}")
-  private String jsonTopic;
-
   private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
+
+  @Value("${topic.json}")
+  private String jsonTopic;
 
   @Autowired
   private KafkaTemplate<String, Car> kafkaTemplate;
