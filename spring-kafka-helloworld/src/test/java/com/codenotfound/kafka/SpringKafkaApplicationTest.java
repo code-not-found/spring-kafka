@@ -18,7 +18,7 @@ import com.codenotfound.kafka.producer.Sender;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringKafkaApplicationTests {
+public class SpringKafkaApplicationTest {
 
   private static String HELLOWORLD_TOPIC = "helloworld.t";
 
