@@ -21,7 +21,7 @@ import example.avro.User;
 @EnableKafka
 public class ReceiverConfig {
 
-  @Value("${kafka.servers.bootstrap}")
+  @Value("${kafka.bootstrap-servers}")
   private String bootstrapServers;
 
   @Bean

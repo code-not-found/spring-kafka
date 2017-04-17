@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
-import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.listener.MessageListenerContainer;
 import org.springframework.kafka.test.rule.KafkaEmbedded;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
@@ -41,22 +40,16 @@ public class SpringKafkaApplicationTest {
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    System.setProperty("kafka.servers.bootstrap", embeddedKafka.getBrokersAsString());
+    System.setProperty("kafka.bootstrap-servers", embeddedKafka.getBrokersAsString());
   }
 
-  @SuppressWarnings("unchecked")
   @Before
   public void setUp() throws Exception {
     // wait until the partitions are assigned
     for (MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry
         .getListenerContainers()) {
-      if (messageListenerContainer instanceof ConcurrentMessageListenerContainer) {
-        ConcurrentMessageListenerContainer<String, User> concurrentMessageListenerContainer =
-            (ConcurrentMessageListenerContainer<String, User>) messageListenerContainer;
-
-        ContainerTestUtils.waitForAssignment(concurrentMessageListenerContainer,
-            embeddedKafka.getPartitionsPerTopic());
-      }
+      ContainerTestUtils.waitForAssignment(messageListenerContainer,
+          embeddedKafka.getPartitionsPerTopic());
     }
   }
 
@@ -64,7 +57,6 @@ public class SpringKafkaApplicationTest {
   public void testReceiver() throws Exception {
     User user = User.newBuilder().setName("John Doe").setFavoriteColor("green")
         .setFavoriteNumber(null).build();
-
     sender.send(user);
 
     receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);

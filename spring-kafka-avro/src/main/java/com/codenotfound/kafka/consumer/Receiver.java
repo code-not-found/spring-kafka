@@ -14,13 +14,13 @@ public class Receiver {
 
   private CountDownLatch latch = new CountDownLatch(1);
 
-  @KafkaListener(topics = "${kafka.topic.avro}")
+  public CountDownLatch getLatch() {
+    return latch;
+  }
+
+  @KafkaListener(topics = "${topic.avro}")
   public void receive(User user) {
     LOGGER.info("received user='{}'", user.toString());
     latch.countDown();
-  }
-
-  public CountDownLatch getLatch() {
-    return latch;
   }
 }
