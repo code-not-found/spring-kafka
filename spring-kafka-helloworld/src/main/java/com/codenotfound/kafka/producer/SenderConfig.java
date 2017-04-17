@@ -25,8 +25,6 @@ public class SenderConfig {
     props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-    // duration for sending after which the producer will throw a TimeoutException if not successful
-    props.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 5000);
 
     return props;
   }
