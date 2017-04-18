@@ -35,8 +35,8 @@ public class SpringKafkaApplicationTest {
     // wait until the partitions are assigned
     for (MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry
         .getListenerContainers()) {
-      // as the topic is created implicitly, the default number of partitions is 1
-      ContainerTestUtils.waitForAssignment(messageListenerContainer, 1);
+      ContainerTestUtils.waitForAssignment(messageListenerContainer,
+          AllSpringKafkaTests.embeddedKafka.getPartitionsPerTopic());
     }
   }
 

@@ -23,7 +23,8 @@ public class AllSpringKafkaTests {
   public static final String RECEIVER_TOPIC = "receiver.t";
 
   @ClassRule
-  public static KafkaEmbedded embeddedKafka = new KafkaEmbedded(1, true, SENDER_TOPIC);
+  public static KafkaEmbedded embeddedKafka =
+      new KafkaEmbedded(1, true, SENDER_TOPIC, RECEIVER_TOPIC);
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
