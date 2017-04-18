@@ -4,15 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import javax.xml.bind.DatatypeConverter;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import example.avro.User;
 
 public class AvroDeserializerTest {
-
-  @Before
-  public void setUp() throws Exception {}
 
   @Test
   public void testDeserialize() {

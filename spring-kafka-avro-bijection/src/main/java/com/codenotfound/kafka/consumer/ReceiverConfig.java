@@ -21,16 +21,17 @@ import example.avro.User;
 @EnableKafka
 public class ReceiverConfig {
 
-  @Value("${kafka.servers.bootstrap}")
+  @Value("${kafka.bootstrap-servers}")
   private String bootstrapServers;
 
   @Bean
   public Map<String, Object> consumerConfigs() {
     Map<String, Object> props = new HashMap<>();
+
     props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
     props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, AvroDeserializer.class);
-    props.put(ConsumerConfig.GROUP_ID_CONFIG, "avro");
+    props.put(ConsumerConfig.GROUP_ID_CONFIG, "avro-bijection");
 
     return props;
   }

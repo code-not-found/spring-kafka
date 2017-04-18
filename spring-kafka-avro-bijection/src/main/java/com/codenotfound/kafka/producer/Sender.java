@@ -10,10 +10,10 @@ import example.avro.User;
 
 public class Sender {
 
-  @Value("${kafka.topic.avro.bijection}")
-  private String avroBijectionTopic;
-
   private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
+
+  @Value("${topic.avro-bijection}")
+  private String avroBijectionTopic;
 
   @Autowired
   private KafkaTemplate<String, User> kafkaTemplate;
