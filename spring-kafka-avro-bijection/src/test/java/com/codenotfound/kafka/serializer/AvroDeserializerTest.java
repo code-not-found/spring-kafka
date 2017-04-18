@@ -18,7 +18,7 @@ public class AvroDeserializerTest {
     byte[] data = DatatypeConverter.parseHexBinary("104A6F686E20446F6502000A677265656E");
     AvroDeserializer<User> avroDeserializer = new AvroDeserializer<>(User.class);
 
-    assertThat(avroDeserializer.deserialize("avro.t", data)).isEqualTo(user);
+    assertThat(avroDeserializer.deserialize("avro-bijection.t", data)).isEqualTo(user);
     avroDeserializer.close();
   }
 }

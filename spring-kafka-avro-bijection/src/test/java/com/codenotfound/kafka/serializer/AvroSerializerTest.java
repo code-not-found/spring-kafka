@@ -17,7 +17,7 @@ public class AvroSerializerTest {
 
     AvroSerializer<User> avroSerializer = new AvroSerializer<>();
 
-    assertThat(avroSerializer.serialize("avro.t", user))
+    assertThat(avroSerializer.serialize("avro-bijection.t", user))
         .isEqualTo(DatatypeConverter.parseHexBinary("104A6F686E20446F6502000A677265656E"));
     avroSerializer.close();
   }
