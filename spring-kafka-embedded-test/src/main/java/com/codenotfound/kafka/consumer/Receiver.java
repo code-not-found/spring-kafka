@@ -12,13 +12,13 @@ public class Receiver {
 
   private CountDownLatch latch = new CountDownLatch(1);
 
-  @KafkaListener(topics = "${kafka.topic.receiver}")
+  public CountDownLatch getLatch() {
+    return latch;
+  }
+
+  @KafkaListener(topics = "${topic.receiver}")
   public void receive(String message) {
     LOGGER.info("received message='{}'", message);
     latch.countDown();
-  }
-
-  public CountDownLatch getLatch() {
-    return latch;
   }
 }

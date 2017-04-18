@@ -15,19 +15,16 @@ import org.springframework.kafka.core.ProducerFactory;
 @Configuration
 public class SenderConfig {
 
-  @Value("${kafka.servers.bootstrap}")
+  @Value("${kafka.bootstrap-servers}")
   private String bootstrapServers;
 
   @Bean
   public Map<String, Object> producerConfigs() {
     Map<String, Object> props = new HashMap<>();
-    // list of host:port pairs used for establishing the initial connections
-    // to the Kakfa cluster
+
     props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-    // value to block, after which it will throw a TimeoutException
-    props.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 5000);
 
     return props;
   }

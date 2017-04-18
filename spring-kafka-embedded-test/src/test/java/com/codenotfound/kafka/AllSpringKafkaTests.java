@@ -9,14 +9,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.test.rule.KafkaEmbedded;
 
+import com.codenotfound.kafka.consumer.SpringKafkaReceiverTest;
+import com.codenotfound.kafka.producer.SpringKafkaSenderTest;
+
 @RunWith(Suite.class)
-@SuiteClasses({SpringKafkaSenderTest.class, SpringKafkaReceiverTest.class})
+@SuiteClasses({SpringKafkaApplicationTest.class, SpringKafkaSenderTest.class,
+    SpringKafkaReceiverTest.class})
 public class AllSpringKafkaTests {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(AllSpringKafkaTests.class);
 
-  protected static final String SENDER_TOPIC = "sender.t";
-  protected static final String RECEIVER_TOPIC = "receiver.t";
+  public static final String SENDER_TOPIC = "sender.t";
+  public static final String RECEIVER_TOPIC = "receiver.t";
 
   @ClassRule
   public static KafkaEmbedded embeddedKafka = new KafkaEmbedded(1, true, SENDER_TOPIC);
@@ -24,8 +28,9 @@ public class AllSpringKafkaTests {
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
     String kafkaBootstrapServers = embeddedKafka.getBrokersAsString();
+
     LOGGER.debug("kafkaServers='{}'", kafkaBootstrapServers);
     // override the property in application.properties
-    System.setProperty("kafka.servers.bootstrap", kafkaBootstrapServers);
+    System.setProperty("kafka.bootstrap-servers", kafkaBootstrapServers);
   }
 }
