@@ -14,6 +14,7 @@ addons:
 env:
 - PROJECT_DIR=spring-kafka-avro
 - PROJECT_DIR=spring-kafka-avro-bijection
+- PROJECT_DIR=spring-kafka-batch-listener
 - PROJECT_DIR=spring-kafka-boot
 - PROJECT_DIR=spring-kafka-embedded-test
 - PROJECT_DIR=spring-kafka-helloworld
