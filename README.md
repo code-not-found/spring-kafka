@@ -1,6 +1,4 @@
-# spring-kafka
-[![Build Status](https://travis-ci.org/code-not-found/spring-kafka.svg?branch=master)](https://travis-ci.org/code-not-found/spring-kafka)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
+# spring-kafka [![Build Status](https://travis-ci.org/code-not-found/spring-kafka.svg?branch=master)](https://travis-ci.org/code-not-found/spring-kafka) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
 
 This repository contains the source code for the spring-kafka examples posted on [https://www.codenotfound.com/spring-kafka/](https://www.codenotfound.com/spring-kafka/)
 
