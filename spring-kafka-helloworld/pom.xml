@@ -8,13 +8,13 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>spring-kafka-helloworld</name>
-  <description>Spring Kafka - Consumer &amp; Producer Example</description>
+  <description>Spring Kafka - Consumer Producer Example</description>
   <url>https://www.codenotfound.com/2016/09/spring-kafka-consumer-producer-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.2.RELEASE</version>
+    <version>1.5.3.RELEASE</version>
   </parent>
 
   <properties>
