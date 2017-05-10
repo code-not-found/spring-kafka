@@ -18,6 +18,7 @@ env:
 - PROJECT_DIR=spring-kafka-boot
 - PROJECT_DIR=spring-kafka-embedded-test
 - PROJECT_DIR=spring-kafka-helloworld
+- PROJECT_DIR=spring-kafka-integration-helloworld
 - PROJECT_DIR=spring-kafka-json
 
 
