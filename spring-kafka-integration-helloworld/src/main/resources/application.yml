@@ -1,0 +1,4 @@
+kafka:
+  bootstrap-servers: localhost:9092
+  topic:
+    spring-integration-kafka: spring-integration-kafka.t
