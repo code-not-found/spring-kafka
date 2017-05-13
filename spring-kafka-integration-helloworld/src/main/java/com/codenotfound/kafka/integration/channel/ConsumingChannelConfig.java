@@ -8,14 +8,13 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.channel.PublishSubscribeChannel;
+import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.kafka.inbound.KafkaMessageDrivenChannelAdapter;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
-import org.springframework.kafka.listener.KafkaMessageListenerContainer;
+import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.listener.config.ContainerProperties;
-import org.springframework.kafka.support.TopicPartitionInitialOffset;
-import org.springframework.messaging.SubscribableChannel;
 
 @Configuration
 public class ConsumingChannelConfig {
@@ -27,34 +26,32 @@ public class ConsumingChannelConfig {
   private String springIntegrationKafkaTopic;
 
   @Bean
-  public SubscribableChannel consumingChannel() {
-    SubscribableChannel publishSubscribeChannel = new PublishSubscribeChannel();
-    publishSubscribeChannel.subscribe(countDownLatchHandler());
-
-    return publishSubscribeChannel;
-  }
-
-  @Bean
-  public CountDownLatchHandler countDownLatchHandler() {
-    return new CountDownLatchHandler();
+  public DirectChannel consumingChannel() {
+    return new DirectChannel();
   }
 
   @Bean
   public KafkaMessageDrivenChannelAdapter<String, String> kafkaMessageDrivenChannelAdapter() {
     KafkaMessageDrivenChannelAdapter<String, String> kafkaMessageDrivenChannelAdapter =
-        new KafkaMessageDrivenChannelAdapter<>(kafkaMessageListenerContainer());
+        new KafkaMessageDrivenChannelAdapter<>(kafkaListenerContainer());
     kafkaMessageDrivenChannelAdapter.setOutputChannel(consumingChannel());
 
     return kafkaMessageDrivenChannelAdapter;
   }
 
+  @Bean
+  @ServiceActivator(inputChannel = "consumingChannel")
+  public CountDownLatchHandler countDownLatchHandler() {
+    return new CountDownLatchHandler();
+  }
+
   @SuppressWarnings("unchecked")
   @Bean
-  public KafkaMessageListenerContainer<String, String> kafkaMessageListenerContainer() {
-    return (KafkaMessageListenerContainer<String, String>) new KafkaMessageListenerContainer<>(
-        consumerFactory(),
-        new ContainerProperties(new TopicPartitionInitialOffset(springIntegrationKafkaTopic, 0, 0L),
-            new TopicPartitionInitialOffset(springIntegrationKafkaTopic, 1, 0L)));
+  public ConcurrentMessageListenerContainer<String, String> kafkaListenerContainer() {
+    ContainerProperties containerProps = new ContainerProperties(springIntegrationKafkaTopic);
+
+    return (ConcurrentMessageListenerContainer<String, String>) new ConcurrentMessageListenerContainer<>(
+        consumerFactory(), containerProps);
   }
 
   @Bean
@@ -69,6 +66,8 @@ public class ConsumingChannelConfig {
     properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     properties.put(ConsumerConfig.GROUP_ID_CONFIG, "spring-integration");
+    // automatically reset the offset to the earliest offset
+    properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
     return properties;
   }

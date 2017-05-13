@@ -48,7 +48,7 @@ public class SpringKafkaIntegrationApplicationTest {
   }
 
   @Test
-  public void testReceive() throws Exception {
+  public void testIntegration() throws Exception {
     MessageChannel producingChannel =
         applicationContext.getBean("producingChannel", MessageChannel.class);
 

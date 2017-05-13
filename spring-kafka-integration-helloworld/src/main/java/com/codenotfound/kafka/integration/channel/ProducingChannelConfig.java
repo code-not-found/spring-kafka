@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.expression.common.LiteralExpression;
-import org.springframework.integration.channel.PublishSubscribeChannel;
+import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.kafka.outbound.KafkaProducerMessageHandler;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.messaging.MessageHandler;
-import org.springframework.messaging.SubscribableChannel;
 
 @Configuration
 public class ProducingChannelConfig {
@@ -24,14 +24,12 @@ public class ProducingChannelConfig {
   private String bootstrapServers;
 
   @Bean
-  public SubscribableChannel producingChannel() {
-    SubscribableChannel publishSubscribeChannel = new PublishSubscribeChannel();
-    publishSubscribeChannel.subscribe(kafkaMessageHandler());
-
-    return publishSubscribeChannel;
+  public DirectChannel producingChannel() {
+    return new DirectChannel();
   }
 
   @Bean
+  @ServiceActivator(inputChannel = "producingChannel")
   public MessageHandler kafkaMessageHandler() {
     KafkaProducerMessageHandler<String, String> handler =
         new KafkaProducerMessageHandler<>(kafkaTemplate());
