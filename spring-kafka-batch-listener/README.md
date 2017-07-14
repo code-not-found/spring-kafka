@@ -1,4 +1,4 @@
-# spring-kafka-helloworld
+# spring-kafka-batch-listener
 
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.codenotfound:spring-kafka-batch-listener)](https://sonarqube.com/dashboard/index/com.codenotfound:spring-kafka-batch-listener)
 

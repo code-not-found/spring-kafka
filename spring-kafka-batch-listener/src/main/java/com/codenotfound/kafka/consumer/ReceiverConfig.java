@@ -28,7 +28,7 @@ public class ReceiverConfig {
     props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     props.put(ConsumerConfig.GROUP_ID_CONFIG, "batch");
-    // maximum records per batch receive
+    // maximum records per poll
     props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "10");
 
     return props;
@@ -44,7 +44,7 @@ public class ReceiverConfig {
     ConcurrentKafkaListenerContainerFactory<String, String> factory =
         new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(consumerFactory());
-    // enable batch listeners
+    // enable batch listening
     factory.setBatchListener(true);
 
     return factory;
