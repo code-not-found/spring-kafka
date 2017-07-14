@@ -1,4 +1,4 @@
-# spring-kafka-helloworld
+# spring-kafka-embedded-test
 
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.codenotfound:spring-kafka-embedded-test)](https://sonarqube.com/dashboard/index/com.codenotfound:spring-kafka-embedded-test)
 

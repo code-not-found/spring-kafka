@@ -14,14 +14,14 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.2.RELEASE</version>
+    <version>1.5.4.RELEASE</version>
   </parent>
 
   <properties>
     <java.version>1.8</java.version>
 
-    <spring-kafka.version>1.2.0.RELEASE</spring-kafka.version>
-    <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    <spring-kafka.version>1.2.2.RELEASE</spring-kafka.version>
+    <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
   </properties>
 
   <dependencies>
