@@ -20,7 +20,7 @@ env:
 - PROJECT_DIR=spring-kafka-helloworld
 - PROJECT_DIR=spring-kafka-integration-helloworld
 - PROJECT_DIR=spring-kafka-json
-
+- PROJECT_DIR=spring-kafka-multiple-consumers
 
 script:
 - cd $PROJECT_DIR
