@@ -9,7 +9,7 @@
 
   <name>spring-kafka-helloworld</name>
   <description>Spring Kafka - Consumer Producer Example</description>
-  <url>https://www.codenotfound.com/2016/09/spring-kafka-consumer-producer-example.html</url>
+  <url>https://www.codenotfound.com/spring-kafka-consumer-producer-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
