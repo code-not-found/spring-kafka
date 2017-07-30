@@ -10,7 +10,6 @@
   <logger name="com.codenotfound" level="DEBUG" />
   <logger name="org.springframework" level="WARN" />
 
-
   <root level="WARN">
     <appender-ref ref="STDOUT" />
   </root>
