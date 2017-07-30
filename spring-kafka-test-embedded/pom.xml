@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.codenotfound</groupId>
-  <artifactId>spring-kafka-test</artifactId>
+  <artifactId>spring-kafka-test-embedded</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>spring-kafka-test</name>
-  <description>Spring-Kafka - Test Example</description>
-  <url>https://www.codenotfound.com/spring-kafka-test-example.html</url>
+  <name>spring-kafka-test-embedded</name>
+  <description>Spring Kafka - Embedded Unit Test Example</description>
+  <url>https://www.codenotfound.com/spring-kafka-embedded-unit-test-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>

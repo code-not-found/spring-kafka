@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.codenotfound</groupId>
-  <artifactId>spring-kafka-embedded-test</artifactId>
+  <artifactId>spring-kafka-test-single-embedded</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>spring-kafka-embedded-test</name>
-  <description>Spring-Kafka - Embedded Kafka Test Example</description>
-  <url>https://www.codenotfound.com/2016/10/spring-kafka-embedded-server-unit-test.html</url>
+  <name>spring-kafka-test-single-embedded</name>
+  <description>Spring-Kafka - Single Embedded Broker Example</description>
+  <url>https://www.codenotfound.com/spring-kafka/</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>

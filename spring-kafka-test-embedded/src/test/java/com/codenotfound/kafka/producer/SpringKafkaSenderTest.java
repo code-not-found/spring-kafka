@@ -1,6 +1,8 @@
 package com.codenotfound.kafka.producer;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertThat;
+import static org.springframework.kafka.test.assertj.KafkaConditions.key;
 import static org.springframework.kafka.test.hamcrest.KafkaMatchers.hasValue;
 
 import java.util.Map;
@@ -102,6 +104,9 @@ public class SpringKafkaSenderTest {
 
     // check that the message was received
     ConsumerRecord<String, String> received = records.poll(10, TimeUnit.SECONDS);
+    // Hamcrest Matchers to check the value
     assertThat(received, hasValue(greeting));
+    // AssertJ Condition to check the key
+    assertThat(received).has(key(null));
   }
 }
