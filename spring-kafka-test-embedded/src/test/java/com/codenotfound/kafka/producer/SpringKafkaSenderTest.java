@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,11 +48,6 @@ public class SpringKafkaSenderTest {
 
   @ClassRule
   public static KafkaEmbedded embeddedKafka = new KafkaEmbedded(1, true, SENDER_TOPIC);
-
-  @BeforeClass
-  public static void setUpBeforeClass() {
-    System.setProperty("kafka.bootstrap-servers", embeddedKafka.getBrokersAsString());
-  }
 
   @Before
   public void setUp() throws Exception {

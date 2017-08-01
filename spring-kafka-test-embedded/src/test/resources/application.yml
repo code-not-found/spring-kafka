@@ -1,0 +1,4 @@
+kafka:
+  bootstrap-servers: ${spring.embedded.kafka.brokers}
+  topic:
+    receiver: receiver.t
