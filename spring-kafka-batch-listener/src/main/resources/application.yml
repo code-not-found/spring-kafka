@@ -1,5 +1,4 @@
 kafka:
   bootstrap-servers: localhost:9092
-
-topic:
-  batch: batch.t
+  topic:
+    batch: batch.t

@@ -21,11 +21,10 @@ public class Receiver {
     return latch;
   }
 
-  @KafkaListener(id = "batch-listener", topics = "${topic.batch}")
+  @KafkaListener(id = "batch-listener", topics = "${kafka.topic.batch}")
   public void receive(List<String> data,
       @Header(KafkaHeaders.RECEIVED_PARTITION_ID) List<Integer> partitions,
       @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
-
     LOGGER.info("start of batch receive");
     for (int i = 0; i < data.size(); i++) {
       LOGGER.info("received message='{}' with partition-offset='{}'", data.get(i),

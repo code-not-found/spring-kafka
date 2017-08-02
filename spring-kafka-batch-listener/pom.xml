@@ -9,7 +9,7 @@
 
   <name>spring-kafka-batch-listener</name>
   <description>Spring Kafka - Batch Listener Example</description>
-  <url>https://www.codenotfound.com/2017/04/spring-kafka-batch-listener-example.html</url>
+  <url>https://www.codenotfound.com/spring-kafka-batch-listener-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
