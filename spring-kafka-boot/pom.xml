@@ -9,7 +9,7 @@
 
   <name>spring-kafka-boot</name>
   <description>Spring Kafka - Spring Boot Example</description>
-  <url>https://www.codenotfound.com/2017/04/spring-kafka-boot-example.html</url>
+  <url>https://www.codenotfound.com/spring-kafka-boot-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>

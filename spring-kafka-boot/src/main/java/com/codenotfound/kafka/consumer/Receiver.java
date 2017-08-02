@@ -19,9 +19,9 @@ public class Receiver {
     return latch;
   }
 
-  @KafkaListener(topics = "${topic.boot}")
+  @KafkaListener(topics = "${kafka.topic.boot}")
   public void receive(ConsumerRecord<?, ?> consumerRecord) {
-    LOGGER.info("received data='{}'", consumerRecord.toString());
+    LOGGER.info("received payload='{}'", consumerRecord.toString());
     latch.countDown();
   }
 }
