@@ -12,7 +12,7 @@ public class Sender {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
 
-  @Value("${topic.json}")
+  @Value("${kafka.topic.json}")
   private String jsonTopic;
 
   @Autowired

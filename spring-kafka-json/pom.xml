@@ -8,8 +8,8 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>spring-kafka-json</name>
-  <description>Spring Kafka - JSON Example</description>
-  <url>https://www.codenotfound.com/2017/03/spring-kafka-json-example</url>
+  <description>Spring Kafka - JSON Serializer Example</description>
+  <url>https://www.codenotfound.com/spring-kafka-json-serializer-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
