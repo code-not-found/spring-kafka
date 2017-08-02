@@ -7,7 +7,7 @@
     </encoder>
   </appender>
 
-  <logger name="com.codenotfound" level="INFO" />
+  <logger name="com.codenotfound" level="DEBUG" />
   <logger name="org.springframework" level="WARN" />
 
   <root level="WARN">
