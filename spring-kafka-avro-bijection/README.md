@@ -4,4 +4,4 @@
 
 A detailed step-by-step tutorial on how to implement an Avro Serializer &amp; Deserializer using Twitter Bijection, Spring Kafka and Spring Boot.
 
-[https://www.codenotfound.com/2017/04/spring-kafka-avro-bijection-example.html](https://www.codenotfound.com/2017/04/spring-kafka-avro-bijection-example.html)
+[https://www.codenotfound.com/spring-kafka-avro-bijection-example.html](https://www.codenotfound.com/spring-kafka-avro-bijection-example.html)

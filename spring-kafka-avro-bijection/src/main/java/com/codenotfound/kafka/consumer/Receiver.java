@@ -18,7 +18,7 @@ public class Receiver {
     return latch;
   }
 
-  @KafkaListener(topics = "${topic.avro-bijection}")
+  @KafkaListener(topics = "${kafka.topic.avro-bijection}")
   public void receive(User user) {
     LOGGER.info("received user='{}'", user.toString());
     latch.countDown();
