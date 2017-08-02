@@ -4,4 +4,4 @@
 
 A detailed step-by-step tutorial on how to implement an Apache Avro Serializer &amp; Deserializer using Spring Kafka and Spring Boot.
 
-[https://www.codenotfound.com/spring-kafka-apache-avro-example.html](https://www.codenotfound.com/spring-kafka-apache-avro-example.html)
+[https://www.codenotfound.com/spring-kafka-apache-avro-serializer-deserializer-example.html](https://www.codenotfound.com/spring-kafka-apache-avro-serializer-deserializer-example.html)

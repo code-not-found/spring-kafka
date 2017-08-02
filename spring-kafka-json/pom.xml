@@ -8,8 +8,8 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>spring-kafka-json</name>
-  <description>Spring Kafka - JSON Serializer Example</description>
-  <url>https://www.codenotfound.com/spring-kafka-json-serializer-example.html</url>
+  <description>Spring Kafka - JSON Serializer Deserializer Example</description>
+  <url>https://www.codenotfound.com/spring-kafka-json-serializer-deserializer-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
