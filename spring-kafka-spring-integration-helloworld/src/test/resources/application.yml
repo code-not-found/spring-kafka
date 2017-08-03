@@ -1,0 +1,4 @@
+kafka:
+  bootstrap-servers: ${spring.embedded.kafka.brokers}
+  topic:
+    spring-integration-kafka: spring-integration-kafka.t

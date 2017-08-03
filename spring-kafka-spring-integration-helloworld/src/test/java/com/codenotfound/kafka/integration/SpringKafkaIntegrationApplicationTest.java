@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,11 +40,6 @@ public class SpringKafkaIntegrationApplicationTest {
   @ClassRule
   public static KafkaEmbedded embeddedKafka =
       new KafkaEmbedded(1, true, SPRING_INTEGRATION_KAFKA_TOPIC);
-
-  @BeforeClass
-  public static void setUpBeforeClass() {
-    System.setProperty("kafka.bootstrap-servers", embeddedKafka.getBrokersAsString());
-  }
 
   @Test
   public void testIntegration() throws Exception {
