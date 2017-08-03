@@ -1,0 +1,5 @@
+kafka:
+  bootstrap-servers: localhost:9092
+  topic:
+    bar: bar.t
+    foo: foo.t

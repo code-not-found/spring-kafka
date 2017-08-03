@@ -1,0 +1,5 @@
+kafka:
+  bootstrap-servers: ${spring.embedded.kafka.brokers}
+  topic:
+    bar: bar.t
+    foo: foo.t

@@ -4,7 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.messaging.Message;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.support.MessageBuilder;
 
 public class Sender {
 
@@ -13,8 +14,9 @@ public class Sender {
   @Autowired
   private KafkaTemplate<String, ?> kafkaTemplate;
 
-  public void send(Message<?> message) {
-    LOGGER.info("sending {}", message.toString());
-    kafkaTemplate.send(message);
+  public void send(String topic, Object payload) {
+    LOGGER.info("sending payload='{}' to topic='{}'", payload.toString(), topic);
+    kafkaTemplate
+        .send(MessageBuilder.withPayload(payload).setHeader(KafkaHeaders.TOPIC, topic).build());
   }
 }

@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.codenotfound</groupId>
-  <artifactId>spring-kafka-multiple-consumers</artifactId>
+  <artifactId>spring-kafka-multiple-topics</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
-  <name>spring-kafka-multiple-consumers</name>
-  <description>Spring Kafka - Multiple Consumers Example</description>
-  <url>https://www.codenotfound.com/spring-kafka</url>
+  <name>spring-kafka-multiple-topics</name>
+  <description>Spring Kafka - Consume Multiple Topics Example</description>
+  <url>https://www.codenotfound.com/spring-kafka-consume-multiple-topics-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>

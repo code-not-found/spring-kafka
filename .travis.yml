@@ -18,7 +18,7 @@ env:
 - PROJECT_DIR=spring-kafka-boot
 - PROJECT_DIR=spring-kafka-helloworld
 - PROJECT_DIR=spring-kafka-json
-- PROJECT_DIR=spring-kafka-multiple-consumers
+- PROJECT_DIR=spring-kafka-multiple-topics
 - PROJECT_DIR=spring-kafka-spring-integration-helloworld
 - PROJECT_DIR=spring-kafka-test-embedded
 

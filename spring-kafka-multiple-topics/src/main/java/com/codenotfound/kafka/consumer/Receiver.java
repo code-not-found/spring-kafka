@@ -19,13 +19,13 @@ public class Receiver {
     return latch;
   }
 
-  @KafkaListener(topics = "${topic.bar}")
+  @KafkaListener(topics = "${kafka.topic.bar}")
   public void receiveBar(Bar bar) {
     LOGGER.info("received {}", bar.toString());
     latch.countDown();
   }
 
-  @KafkaListener(topics = "${topic.foo}")
+  @KafkaListener(topics = "${kafka.topic.foo}")
   public void receiveFoo(Foo foo) {
     LOGGER.info("received {}", foo.toString());
     latch.countDown();

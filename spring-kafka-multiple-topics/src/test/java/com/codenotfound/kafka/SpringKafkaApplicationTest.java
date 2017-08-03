@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,11 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.kafka.listener.MessageListenerContainer;
-import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.kafka.test.rule.KafkaEmbedded;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.codenotfound.kafka.consumer.Receiver;
@@ -44,11 +40,6 @@ public class SpringKafkaApplicationTest {
   @ClassRule
   public static KafkaEmbedded embeddedKafka = new KafkaEmbedded(1, true, BAR_TOPIC, FOO_TOPIC);
 
-  @BeforeClass
-  public static void setUpBeforeClass() throws Exception {
-    System.setProperty("kafka.bootstrap-servers", embeddedKafka.getBrokersAsString());
-  }
-
   @Before
   public void setUp() throws Exception {
     // wait until the partitions are assigned
@@ -61,13 +52,8 @@ public class SpringKafkaApplicationTest {
 
   @Test
   public void testReceive() throws Exception {
-    Message<Bar> bar =
-        MessageBuilder.withPayload(new Bar("bar")).setHeader(KafkaHeaders.TOPIC, BAR_TOPIC).build();
-    sender.send(bar);
-
-    Message<Foo> foo =
-        MessageBuilder.withPayload(new Foo("foo")).setHeader(KafkaHeaders.TOPIC, FOO_TOPIC).build();
-    sender.send(foo);
+    sender.send(BAR_TOPIC, new Bar("bar"));
+    sender.send(FOO_TOPIC, new Foo("foo"));
 
     receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
     assertThat(receiver.getLatch().getCount()).isEqualTo(0);
