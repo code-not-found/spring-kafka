@@ -23,27 +23,27 @@ import com.codenotfound.kafka.producer.Sender;
 @SpringBootTest
 public class SpringKafkaApplicationTest {
 
-  private static String HELLOWORLD_TOPIC = "helloworld.t";
+  protected final static String HELLOWORLD_TOPIC = "helloworld.t";
 
   @Autowired
-  private Sender sender;
+  private KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
 
   @Autowired
   private Receiver receiver;
 
   @Autowired
-  private KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
+  private Sender sender;
 
   @ClassRule
-  public static KafkaEmbedded embeddedKafka = new KafkaEmbedded(1, true, HELLOWORLD_TOPIC);
+  public static KafkaEmbedded kafkaEmbedded = new KafkaEmbedded(1, true, HELLOWORLD_TOPIC);
 
   @Before
-  public void setUp() throws Exception {
-    // wait until the partitions are assigned
+  public void runBeforeTestMethod() throws Exception {
+    // wait until all the partitions are assigned
     for (MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry
         .getListenerContainers()) {
       ContainerTestUtils.waitForAssignment(messageListenerContainer,
-          embeddedKafka.getPartitionsPerTopic());
+          kafkaEmbedded.getPartitionsPerTopic());
     }
   }
 
