@@ -2,7 +2,6 @@ package com.codenotfound.kafka.producer;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;

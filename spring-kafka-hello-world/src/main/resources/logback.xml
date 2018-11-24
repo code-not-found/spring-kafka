@@ -8,7 +8,7 @@
 
   <logger name="com.codenotfound" level="INFO" />
   <logger name="org.springframework" level="WARN" />
-  <logger name="org.apache.kafka.test" level="OFF" />
+
 
   <root level="WARN">
     <appender-ref ref="STDOUT" />
