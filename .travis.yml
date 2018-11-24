@@ -16,7 +16,7 @@ env:
 - PROJECT_DIR=spring-kafka-avro-bijection
 - PROJECT_DIR=spring-kafka-batch-listener
 - PROJECT_DIR=spring-kafka-boot
-- PROJECT_DIR=spring-kafka-helloworld
+- PROJECT_DIR=spring-kafka-hello-world
 - PROJECT_DIR=spring-kafka-json
 - PROJECT_DIR=spring-kafka-multiple-topics
 - PROJECT_DIR=spring-kafka-spring-integration-helloworld
