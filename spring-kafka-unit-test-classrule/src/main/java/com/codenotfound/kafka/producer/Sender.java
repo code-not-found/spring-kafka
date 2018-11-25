@@ -7,13 +7,14 @@ import org.springframework.kafka.core.KafkaTemplate;
 
 public class Sender {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(Sender.class);
+  private static final Logger LOGGER =
+      LoggerFactory.getLogger(Sender.class);
 
   @Autowired
   private KafkaTemplate<String, String> kafkaTemplate;
 
-  public void send(String topic, String payload) {
-    LOGGER.info("sending payload='{}' to topic='{}'", payload, topic);
-    kafkaTemplate.send(topic, payload);
+  public void send(String payload) {
+    LOGGER.info("sending payload='{}'", payload);
+    kafkaTemplate.send("sender.t", payload);
   }
 }

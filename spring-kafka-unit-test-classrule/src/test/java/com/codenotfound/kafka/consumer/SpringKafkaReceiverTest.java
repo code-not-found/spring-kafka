@@ -1,10 +1,8 @@
 package com.codenotfound.kafka.consumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -18,7 +16,7 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.listener.MessageListenerContainer;
-import org.springframework.kafka.test.rule.KafkaEmbedded;
+import org.springframework.kafka.test.rule.EmbeddedKafkaRule;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.annotation.DirtiesContext;
@@ -29,7 +27,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DirtiesContext
 public class SpringKafkaReceiverTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(SpringKafkaReceiverTest.class);
+  private static final Logger LOGGER =
+      LoggerFactory.getLogger(SpringKafkaReceiverTest.class);
 
   private static String RECEIVER_TOPIC = "receiver.t";
 
@@ -42,17 +41,20 @@ public class SpringKafkaReceiverTest {
   private KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
 
   @ClassRule
-  public static KafkaEmbedded embeddedKafka = new KafkaEmbedded(1, true, RECEIVER_TOPIC);
+  public static EmbeddedKafkaRule embeddedKafka =
+      new EmbeddedKafkaRule(1, true, RECEIVER_TOPIC);
 
   @Before
   public void setUp() throws Exception {
     // set up the Kafka producer properties
     Map<String, Object> senderProperties =
-        KafkaTestUtils.senderProps(embeddedKafka.getBrokersAsString());
+        KafkaTestUtils.senderProps(
+            embeddedKafka.getEmbeddedKafka().getBrokersAsString());
 
     // create a Kafka producer factory
     ProducerFactory<String, String> producerFactory =
-        new DefaultKafkaProducerFactory<String, String>(senderProperties);
+        new DefaultKafkaProducerFactory<String, String>(
+            senderProperties);
 
     // create a Kafka template
     template = new KafkaTemplate<>(producerFactory);
@@ -63,7 +65,7 @@ public class SpringKafkaReceiverTest {
     for (MessageListenerContainer messageListenerContainer : kafkaListenerEndpointRegistry
         .getListenerContainers()) {
       ContainerTestUtils.waitForAssignment(messageListenerContainer,
-          embeddedKafka.getPartitionsPerTopic());
+          embeddedKafka.getEmbeddedKafka().getPartitionsPerTopic());
     }
   }
 

@@ -20,7 +20,7 @@ env:
 - PROJECT_DIR=spring-kafka-json
 - PROJECT_DIR=spring-kafka-multiple-topics
 - PROJECT_DIR=spring-kafka-spring-integration-helloworld
-- PROJECT_DIR=spring-kafka-test-embedded
+- PROJECT_DIR=spring-kafka-unit-test-classrule
 
 script:
 - cd $PROJECT_DIR
