@@ -8,9 +8,8 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>spring-kafka-hello-world</name>
-  <description>Spring Kafka - Consumer Producer Example</description>
-  <url>https://www.codenotfound.com/spring-kafka-consumer-producer-example.html</url>
-
+  <description>Spring Kafka Consumer Producer Example</description>
+  <url>https://codenotfound.com/spring-kafka-consumer-producer-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
