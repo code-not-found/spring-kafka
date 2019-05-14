@@ -20,7 +20,7 @@ public class SenderConfig {
   @Bean
   public Map<String, Object> producerConfigs() {
     Map<String, Object> props = new HashMap<>();
-    // list of host:port pairs used for establishing the initial connections to the Kakfa cluster
+    // list of host:port pairs used for establishing the initial connections to the Kafka cluster
     props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
         bootstrapServers);
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
